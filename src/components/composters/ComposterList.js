@@ -18,6 +18,15 @@ import { useMediaQuery } from '@material-ui/core'
 
 import { enumBroyat, enumStatus } from '../Enums'
 
+const createdDateFilter = () => {
+  const currentYear = new Date().getFullYear()
+  let dateListe = []
+  for (let year = 2007; year <= currentYear; year++) {
+    dateListe.push({ id: year, name: year })
+  }
+  return dateListe
+}
+
 const ComposterFilter = (props) => (
   <Filter {...props}>
     <TextInput source="name" alwaysOn />
@@ -56,6 +65,7 @@ const ComposterFilter = (props) => (
       />
     </ReferenceInput>
     <SelectInput source="broyatLevel" choices={enumBroyat} helperText="" />
+    <SelectInput label="Date de mise en route" source="DateMiseEnRoute" choices={createdDateFilter()} helperText="" />
     <BooleanInput source="acceptNewMembers" defaultValue={true} />
   </Filter>
 )
