@@ -108,6 +108,7 @@ const ComposterInputs = ({ hasList, hasEdit, hasShow, hasCreate, ...rest }) => {
       <BooleanInput source="hasCadenas" />
       <BooleanInput source="hasFourche" />
       <BooleanInput source="hasThermometre" />
+      <BooleanInput source="hasPeson" />
       <NumberInput source="lat" />
       <NumberInput source="lng" />
       <MapInput />
