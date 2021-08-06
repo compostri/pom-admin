@@ -65,38 +65,38 @@ const ComposterInputs = ({ hasList, hasEdit, hasShow, hasCreate, ...rest }) => {
       <DateInput source="DateMiseEnRoute" />
       <DateInput source="DateInauguration" />
       <DateInput source="DateInstallation" />
-      <ReferenceInput source="categorie[@id]" reference="categories" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="categorie" reference="categories" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
       <TextInput source="permanencesDescription" />
       <BooleanInput source="acceptNewMembers" />
       <TextInput source="description" multiline />
       <TextInput source="publicDescription" multiline />
-      <ReferenceInput source="financeur[@id]" reference="financeurs" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="financeur" reference="financeurs" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
-      <ReferenceInput source="financeurSuivi[@id]" reference="financeurs" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="financeurSuivi" reference="financeurs" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
-      <ReferenceInput source="commune[@id]" reference="communes" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="commune" reference="communes" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
-      <ReferenceInput source="pole[@id]" reference="poles" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="pole" reference="poles" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
-      <ReferenceInput source="quartier[@id]" reference="quartiers" allowEmpty>
-        <SelectInput optionText="name" />
+      <ReferenceInput source="quartier" reference="quartiers" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="name" optionValue="@id" />
       </ReferenceInput>
       <TextInput source="address" validate={required()} />
-      <ReferenceInput source="mc[@id]" reference="users" filter={{ roles: 'ROLE_ADMIN' }}>
-        <SelectInput optionText="username" />
+      <ReferenceInput source="mc" reference="users" filter={{ roles: 'ROLE_ADMIN' }} format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText="username" optionValue="@id" />
       </ReferenceInput>
-      <ReferenceInput source="equipement[@id]" reference="equipements">
-        <SelectInput optionText={(record) => `${record.type} ${record.capacite}`} />
+      <ReferenceInput source="equipement" reference="equipements" format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput optionText={(record) => `${record.type} ${record.capacite}`} optionValue="@id" />
       </ReferenceInput>
       <TextInput source="openingProcedures" />
-      <ReferenceInput source="approvisionnementBroyat[@id]" reference="approvisionnement_broyats" allowEmpty>
-        <SelectInput source="name" />
+      <ReferenceInput source="approvisionnementBroyat" reference="approvisionnement_broyats" allowEmpty format={(c) => (c instanceof Object ? c['@id'] : c)}>
+        <SelectInput source="name" optionValue="@id" />
       </ReferenceInput>
       <TextInput source="AlimentsAutorises" />
       <TextInput source="AlimentsNonAutorises" />
