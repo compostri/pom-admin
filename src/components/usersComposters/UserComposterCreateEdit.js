@@ -73,7 +73,14 @@ const UserComposterCreate = (props) => {
         </FormDataConsumer>
 
         <SelectInput source="capability" choices={enumDroits} defaultValue={enumDroits[0].id} validate={required()} />
-        <ReferenceInput source="composter[@id]" reference="composters" alwaysOn filterToQuery={(name) => ({ name })} validate={required()}>
+        <ReferenceInput
+          source="composter"
+          reference="composters"
+          alwaysOn
+          filterToQuery={(name) => ({ name })}
+          validate={required()}
+          format={(c) => (c instanceof Object ? c['@id'] : c)}
+        >
           <AutocompleteInput optionValue="@id" />
         </ReferenceInput>
       </SimpleForm>
@@ -87,7 +94,13 @@ const UserComposterEdit = (props) => (
       <ReferenceField source="user[@id]" reference="users">
         <TextField source="username" />
       </ReferenceField>
-      <ReferenceInput source="composter[@id]" reference="composters" alwaysOn filterToQuery={(name) => ({ name })}>
+      <ReferenceInput
+        source="composter"
+        reference="composters"
+        alwaysOn
+        filterToQuery={(name) => ({ name })}
+        format={(c) => (c instanceof Object ? c['@id'] : c)}
+      >
         <AutocompleteInput optionValue="@id" />
       </ReferenceInput>
       <SelectInput source="capability" choices={enumDroits} />
