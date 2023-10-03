@@ -98,6 +98,8 @@ const ComposterInputs = ({ hasList, hasEdit, hasShow, hasCreate, ...rest }) => {
       <ReferenceInput source="approvisionnementBroyat[@id]" reference="approvisionnement_broyats" allowEmpty>
         <SelectInput source="name" />
       </ReferenceInput>
+      <TextInput source="AlimentsAutorises" />
+      <TextInput source="alimentsNonAutorises" />
       <SelectInput source="broyatLevel" choices={enumBroyat} defaultValue={enumBroyat[0].id} />
       <NumberInput source="nbFoyersPotentiels" />
       <NumberInput source="nbInscrit" />
