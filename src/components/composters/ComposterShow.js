@@ -142,6 +142,8 @@ const ComposterShow = (props) => {
           <BooleanField source="acceptNewMembers" addLabel />
           <TextField source="description" addLabel />
           <TextField source="publicDescription" addLabel />
+          <TextField source="AlimentsAutorises" addLabel />
+          <TextField source="AlimentsNonAutorises" addLabel />
           <ReferenceField source="commune[@id]" reference="communes" allowEmpty link="show">
             <TextField source="name" />
           </ReferenceField>
