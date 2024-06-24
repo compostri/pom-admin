@@ -214,7 +214,7 @@ const ComposterShow = (props) => {
           <BooleanArrayField fields={['hasCroc', 'hasCadenas', 'hasFourche', 'hasThermometre', 'hasPeson']} title="Outillage présent" />
         </Tab>
         <Tab label="Contact">
-          <ReferenceManyField label="Utilisateurs" reference="user_composters" target="composter" source="rid" pagination={<Pagination />} perPage={5}>
+          <ReferenceManyField label="Utilisateurs" reference="user_composters" target="composter" source="rid" pagination={<Pagination />} perPage={5} sort={{ field: 'capability', order: 'DESC' }}>
             <Datagrid>
               <TextField source="user.username" />
               <TextField source="user.firstname" />

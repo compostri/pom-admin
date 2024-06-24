@@ -14,7 +14,7 @@ const SuivisInputs = ({ hasList, hasEdit, hasShow, hasCreate, ...rest }) => {
   return (
     <SimpleForm {...rest} redirect={composter ? `/composters/${encodeURIComponent(composter)}/show/1` : 'show'} defaultValue={{ date: new Date(), composter }}>
       <DateInput source="date" validate={required()} />
-      <TextInput source="description" validate={required()} />
+      <TextInput source="description" validate={required()} multiline />
       <ReferenceInput
         source="composter"
         reference="composters"
