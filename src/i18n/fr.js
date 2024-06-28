@@ -1,4 +1,4 @@
-export default {
+const fr = {
   resources: {
     menu: {
       composters: 'Composteurs',
@@ -189,3 +189,4 @@ export default {
     },
   },
 }
+export default fr
