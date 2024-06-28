@@ -36,7 +36,7 @@ const i18nProvider = polyglotI18nProvider((locale) => {
   return messages[locale]
 }, 'fr')
 
-export default () => (
+const app = () => (
   <HydraAdmin
     dataProvider={dataProvider}
     authProvider={authProvider}
@@ -78,3 +78,5 @@ export default () => (
     <ResourceGuesser name="financeurs" create={FinanceurCreate} edit={FinanceurEdit} show={FinanceurShow} list={SimpleNameList} icon={EuroSymbol} />
   </HydraAdmin>
 )
+
+export default app
