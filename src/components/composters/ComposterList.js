@@ -52,6 +52,9 @@ const ComposterFilter = (props) => (
     <ReferenceInput source="financeurSuivi" reference="financeurs">
       <SelectInput optionText="name" optionValue="id" helperText="" />
     </ReferenceInput>
+    <ReferenceInput source="mc" reference="users" filter={{ roles: 'ROLE_ADMIN' }} format={(c) => (c instanceof Object ? c['@id'] : c)}>
+      <SelectInput optionText="username" optionValue="@id" helperText="" />
+    </ReferenceInput>
     <ReferenceInput source="contacts" reference="contacts">
       <SelectInput optionText="firstName" optionValue="id" helperText="" />
     </ReferenceInput>
