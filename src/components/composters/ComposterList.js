@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   Datagrid,
+    downloadCSV,
   EditButton,
   ShowButton,
   List,
@@ -15,6 +16,7 @@ import {
   SimpleList,
 } from 'react-admin'
 import { useMediaQuery } from '@material-ui/core'
+import jsonExport from 'jsonexport/dist';
 
 import { enumBroyat, enumStatus } from '../Enums'
 
@@ -70,10 +72,33 @@ const ComposterFilter = (props) => (
   </Filter>
 )
 
+const exporter = posts => {
+    const postsForExport = posts.map(post => {
+        const { quartier, commune, equipement, approvisionnementBroyat, categorie, image, financeur, pole, mc,financeurSuivi, ...postForExport } = post; // omit backlinks and author
+        postForExport.quartier_name = quartier ? quartier.name : '';
+        postForExport.commune_name = commune ? commune.name : '';
+        postForExport.equipement_type = equipement ? `${equipement.type} - ${equipement.capacite}` : '';
+        postForExport.approvisionnementBroyat_name = approvisionnementBroyat ? approvisionnementBroyat.name : '';
+        postForExport.categorie_name = categorie ? categorie.name : '';
+        postForExport.financeur_name = financeur ? financeur.name : '';
+        postForExport.financeurSuivi_name = financeurSuivi ? financeurSuivi.name : '';
+        postForExport.pole_name = pole ? pole.name : '';
+        postForExport.mc_name = mc ? `${mc.username} - ${mc.email}` : '';
+        return postForExport;
+    });
+    jsonExport(postsForExport, {
+        textDelimiter: '"',
+        forceTextDelimiter: true,
+        headers: ['@id', 'rid', 'name', 'slug', 'quartier_name', 'commune_name', 'equipement_type', 'approvisionnementBroyat_name', 'categorie_name', 'financeur_name','financeurSuivi_name', 'pole_name', 'mc_name'] // order fields in the export
+    }, (err, csv) => {
+        downloadCSV(csv, 'composteurs'); // download as 'posts.csv` file
+    });
+};
+
 const ComposterList = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down('sm'))
   return (
-    <List {...props} filters={<ComposterFilter />} sort={{ field: 'serialNumber', order: 'DESC' }} perPage={25}>
+    <List {...props} filters={<ComposterFilter />} sort={{ field: 'serialNumber', order: 'DESC' }} perPage={25} exporter={exporter}>
       {isSmall ? (
         <SimpleList
           linkType="show"
