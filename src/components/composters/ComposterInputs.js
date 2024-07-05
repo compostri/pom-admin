@@ -43,7 +43,7 @@ const ComposterInputs = ({ hasList, hasEdit, hasShow, hasCreate, ...rest }) => {
   return (
     <SimpleForm {...rest} redirect="show">
       <TextInput source="name" validate={required()} />
-      <ReferenceField source="image[@id]" reference="media_objects" allowEmpty>
+      <ReferenceField source="image[@id]" reference="media_objects" allowEmpty link={false}>
         <ImageField source="contentUrl" style={{ display: image ? 'none' : 'block' }} />
       </ReferenceField>
       {image && (
