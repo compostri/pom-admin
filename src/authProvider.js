@@ -27,7 +27,7 @@ const getRefreshedToken = async () => {
   }
 }
 
-export default {
+const auth =  {
   login: ({ username, password }) => {
     const request = new Request(`${process.env.REACT_APP_API_ENTRYPOINT}/login_check`, {
       method: 'POST',
@@ -64,3 +64,5 @@ export default {
   },
   getPermissions: (params) => Promise.resolve(),
 }
+
+export default auth

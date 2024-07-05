@@ -142,6 +142,8 @@ const ComposterShow = (props) => {
           <BooleanField source="acceptNewMembers" addLabel />
           <TextField source="description" addLabel />
           <TextField source="publicDescription" addLabel />
+          <TextField source="AlimentsAutorises" addLabel />
+          <TextField source="AlimentsNonAutorises" addLabel />
           <ReferenceField source="commune[@id]" reference="communes" allowEmpty link="show">
             <TextField source="name" />
           </ReferenceField>
@@ -214,7 +216,7 @@ const ComposterShow = (props) => {
           <BooleanArrayField fields={['hasCroc', 'hasCadenas', 'hasFourche', 'hasThermometre', 'hasPeson']} title="Outillage présent" />
         </Tab>
         <Tab label="Contact">
-          <ReferenceManyField label="Utilisateurs" reference="user_composters" target="composter" source="rid" pagination={<Pagination />} perPage={5}>
+          <ReferenceManyField label="Utilisateurs" reference="user_composters" target="composter" source="rid" pagination={<Pagination />} perPage={5} sort={{ field: 'capability', order: 'DESC' }}>
             <Datagrid>
               <TextField source="user.username" />
               <TextField source="user.firstname" />

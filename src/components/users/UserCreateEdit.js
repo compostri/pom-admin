@@ -10,6 +10,7 @@ const UserInputs2 = [
   <TextInput source="firstname" />,
   <TextInput source="lastname" />,
   <TextInput source="phone" />,
+  <BooleanInput source="syndicCopropriete" />,
   <BooleanInput source="hasFormationReferentSite" />,
   <BooleanInput source="hasFormationGuideComposteur" />,
   <BooleanInput source="isSubscribeToCompostriNewsletter" />,
