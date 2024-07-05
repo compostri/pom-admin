@@ -44,13 +44,9 @@ const styles = theme => ({
     color: theme.palette.common.white
   },
   imageSrc: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 40%'
+    objectFit: 'cover',
+    height: '100%',
+    width: '100%',
   },
   imageBackdrop: {
     position: 'absolute',
@@ -97,12 +93,10 @@ const GridButtons = ({ onSelected, data, ...props }) => {
               }}
               onClick={e => onSelected(image)}
             >
-              <span
+              <img
                 className={classes.imageSrc}
-                style={{
-                  backgroundImage: `url(${image.contentUrl})`,
-                  backgroundSize: 'cover'
-                }}
+                src={image.contentUrl}
+                alt={image.imageName}
               />
               <span className={classes.imageBackdrop} />
             </ButtonBase>
