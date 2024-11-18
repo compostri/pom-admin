@@ -106,7 +106,7 @@ const ComposterList = (props) => {
         <SimpleList
           linkType="show"
           primaryText={(record) => record.name}
-          secondaryText={(record) => record.commune.name}
+          secondaryText={(record) => record.commune?.name}
           tertiaryText={(record) => record.status}
         />
       ) : (
