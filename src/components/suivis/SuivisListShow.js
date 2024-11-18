@@ -50,8 +50,9 @@ const SuivisList = (props) => {
       {isSmall ? (
         <SimpleList
           linkType="show"
-          primaryText={(record) => `Anim:${record.animation} Env:${record.environnement} Tech:${record.technique} Aut:${record.autonomie}`}
-          secondaryText={(record) => `${new Date(record.date).toLocaleDateString()} ${record.composter.name}`}
+          primaryText={(record) => record.composter.name}
+          secondaryText={(record) => `Anim:${record.animation} Env:${record.environnement} Tech:${record.technique} Aut:${record.autonomie}`}
+          tertiaryText={(record) => new Date(record.date).toLocaleDateString()}
         />
       ) : (
         <Datagrid>
